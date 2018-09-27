@@ -1,5 +1,50 @@
 project: poseidon
 
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  messages:
+    encoding: UTF-8
+  banner:
+    charset: UTF-8
+  mvc:
+    static-path-pattern: /static/**
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update #新增数据库链接必备的参数
+    show-sql: false
+
+  kafka:
+    bootstrap-server: 127.0.0.1:9092
+    listener:
+      concurrency: 1
+    producer:
+      retries: 0
+      acks: all
+      batch-size: 16384
+      buffer-memory: 33554432
+    consumer:
+      enable-auto-commit: true
+      auto-commit-interval: 100
+      auto-offset-reset: latest
+
+server:
+  port: 80
+  servlet:
+    context-path: /${project}
+  tomcat:
+    uri-encoding: utf-8
+
+
+kafka:
+  topic:
+    realtime: sampleMsg
+
 #spring:
 #  datasource:
 #    name: mysql_${project}
@@ -30,25 +75,6 @@ project: poseidon
 #      #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
 #      pool-prepared-statements: false
 #      max-pool-prepared-statement-per-connection-size: 20
-
-spring:
-  http:
-    encoding:
-      charset: UTF-8
-      enabled: true
-      force: true
-  messages:
-    encoding: UTF-8
-  banner:
-    charset: UTF-8
-  mvc:
-    static-path-pattern: /static/**
-
-
-  jpa:
-    hibernate:
-      ddl-auto: update #新增数据库链接必备的参数
-    show-sql: false
 
 #  thymeleaf:
 #    prefix: classpath:/templates/thymeleaf/
@@ -91,12 +117,6 @@ spring:
 #    map-underscore-to-camel-case: true
 #    cache-enabled: false
 
-server:
-  port: 80
-  servlet:
-    context-path: /${project}
-  tomcat:
-    uri-encoding: utf-8
 
 
   #pagehelper

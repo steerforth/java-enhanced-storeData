@@ -1,3 +1,15 @@
 spring:
   profiles:
     active: @profiles.active@
+
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      retries: 0
+      acks: all
+      batch-size: 16384
+      buffer-memory: 33554432
+
+
+

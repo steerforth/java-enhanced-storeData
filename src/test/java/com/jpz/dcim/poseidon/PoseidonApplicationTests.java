@@ -1,4 +1,4 @@
-package com.jzp.dcim.poseidon;
+package com.jpz.dcim.poseidon;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

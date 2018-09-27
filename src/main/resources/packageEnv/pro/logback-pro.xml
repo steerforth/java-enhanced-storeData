@@ -59,7 +59,7 @@
         <logger name="org.thymeleaf" level="WARN" />
         <logger name="com.baomidou.mybatisplus" level="WARN" />
 
-        <logger name="com.dcim.medusha" level="INFO" />
+        <logger name="com.jpz.dcim.poseidon" level="INFO" />
 
         <!-- 生产环境下的日志配置 -->
         <root level="INFO">

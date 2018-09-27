@@ -1,4 +1,4 @@
-package com.jzp.dcim.poseidon.common.config;
+package com.jpz.dcim.poseidon.common.config;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;

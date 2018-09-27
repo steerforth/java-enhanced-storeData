@@ -47,19 +47,19 @@
         </appender>
         <logger name="system_error" additivity="true">
             <appender-ref ref="SYSTEM_FILE"/>
-        </logger>
+       </logger>
 
 
 
         <!-- 设置Spring&mybatis&thymeleaf日志输出级别 -->
-        <logger name="org.springframework" level="WARN" />
+       <logger name="org.springframework" level="WARN" />
         <logger name="org.hibernate" level="WARN" />
-        <logger name="org.mybatis" level="WARN" />
+       <logger name="org.mybatis" level="WARN" />
         <logger name="org.apache.ibatis" level="WARN" />
         <logger name="org.thymeleaf" level="WARN" />
         <logger name="com.baomidou.mybatisplus" level="WARN" />
 
-        <logger name="com.dcim.medusha" level="DEBUG" />
+        <logger name="com.jpz.dcim.poseidon" level="DEBUG" />
 
         <!-- 测试环境下的日志配置 -->
         <root level="DEBUG">
