@@ -1,0 +1,28 @@
+project: poseidon
+
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  messages:
+    encoding: UTF-8
+  banner:
+    charset: UTF-8
+  mvc:
+    static-path-pattern: /static/**
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update #新增数据库链接必备的参数
+    show-sql: false
+
+
+server:
+  port: 80
+  servlet:
+    context-path: /${project}
+  tomcat:
+    uri-encoding: utf-8
