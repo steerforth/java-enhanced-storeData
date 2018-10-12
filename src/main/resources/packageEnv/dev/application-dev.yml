@@ -22,7 +22,7 @@ spring:
   kafka:
     bootstrap-server: 127.0.0.1:9092
     listener:
-      concurrency: 1
+      concurrency: 3
     producer:
       retries: 0
       acks: all
@@ -40,12 +40,22 @@ server:
   tomcat:
     uri-encoding: utf-8
 
-
+#-------------自定义配置-------------
 kafka:
   topic:
     realtime: sampleMsg
 
-#spring:
+jedis :
+  pool :
+    host : 127.0.0.1
+    port : 6379
+    config :
+      maxTotal: 35
+      maxIdle: 10
+      maxWait : 100000
+      testOnBorrow : true
+
+  #spring:
 #  datasource:
 #    name: mysql_${project}
 #    type: com.alibaba.druid.pool.DruidDataSource

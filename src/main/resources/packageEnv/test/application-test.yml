@@ -26,3 +26,18 @@ server:
     context-path: /${project}
   tomcat:
     uri-encoding: utf-8
+
+#-------------自定义配置-------------
+kafka:
+  topic:
+    realtime: sampleMsg
+
+jedis :
+  pool :
+    host : 127.0.0.1
+    port : 6379
+    config :
+      maxActive: 35
+      maxIdle: 10
+      maxWait : 100000
+      testOnBorrow : true
