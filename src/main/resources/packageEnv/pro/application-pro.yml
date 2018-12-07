@@ -28,17 +28,35 @@ server:
     uri-encoding: utf-8
 
 #-------------自定义配置-------------
+#-------------自定义配置-------------
 kafka:
-  topic:
-    realtime: sampleMsg
+  bootstrap-server: 127.0.0.1:9092
+  concurrency: 10
+  group: poseidon
+  timeout: 30000
+  poll-time: 100
+  topics:
+  - sampleMsg
+  producer:
+    retries: 0
+    acks: all
+    batch-size: 16384
+    buffer-memory: 33554432
+    linger-ms: 1
+    max-block-ms: 1000
+  consumer:
+    enable-auto-commit: true
+    auto-commit-interval: 100
+    auto-offset-reset: latest
 
 jedis :
   pool :
     host : 127.0.0.1
     port : 6379
     config :
-      maxActive: 35
+      maxTotal: 35
       maxIdle: 10
       maxWait : 100000
       testOnBorrow : true
+
 

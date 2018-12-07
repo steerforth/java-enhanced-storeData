@@ -8,8 +8,6 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.annotation.TopicPartition;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -22,15 +20,15 @@ import java.util.Map;
  * @Description: kafka消费者
  * @Date: 2018-09-27 17:10
  */
-@Component
+//@Component
 public class KafkaConsumerListener {
     private Logger logger = LoggerFactory.getLogger(KafkaConsumerListener.class);
 
-    @Autowired
-    private RedisClient redisClient;
+//    @Autowired
+//    private RedisClient redisClient;
 
 
-    @KafkaListener(id="listener0",topicPartitions ={@TopicPartition(topic ="${kafka.topic.realtime}",partitions = {"0","5"})})
+//    @KafkaListener(id="listener0",topicPartitions ={@TopicPartition(topic ="${kafka.topic.realtime}",partitions = {"0","5"})})
 //    @KafkaListener(id="listener1",topics ="${kafka.topic.realtime}")
 //    @KafkaListeners()
     public void processMsg(List<ConsumerRecord<String, String>> records){
@@ -40,7 +38,7 @@ public class KafkaConsumerListener {
     }
 
 
-    @KafkaListener(id="listener1",topicPartitions ={@TopicPartition(topic ="${kafka.topic.realtime}",partitions = {"1","6"})})
+//    @KafkaListener(id="listener1",topicPartitions ={@TopicPartition(topic ="${kafka.topic.realtime}",partitions = {"1","6"})})
     public void processMsg1(List<ConsumerRecord<String, String>> records){
         for(ConsumerRecord<String, String> record: records){
             logger.info("线程id:{} patition:{} 消费到消息：topic:{}--key:{}--value:{}",Thread.currentThread().getId(),record.partition(),record.topic(),record.key(),record.value());
@@ -48,21 +46,21 @@ public class KafkaConsumerListener {
     }
 
 
-    @KafkaListener(id="listener2",topicPartitions ={@TopicPartition(topic ="${kafka.topic.realtime}",partitions = {"2","7"})})
+//    @KafkaListener(id="listener2",topicPartitions ={@TopicPartition(topic ="${kafka.topic.realtime}",partitions = {"2","7"})})
     public void processMsg2(List<ConsumerRecord<String, String>> records){
         for(ConsumerRecord<String, String> record: records){
             logger.info("线程id:{} patition:{} 消费到消息：topic:{}--key:{}--value:{}",Thread.currentThread().getId(),record.partition(),record.topic(),record.key(),record.value());
         }
     }
 
-    @KafkaListener(id="listener3",topicPartitions ={@TopicPartition(topic ="${kafka.topic.realtime}",partitions = {"3","8"})})
+//    @KafkaListener(id="listener3",topicPartitions ={@TopicPartition(topic ="${kafka.topic.realtime}",partitions = {"3","8"})})
     public void processMsg3(List<ConsumerRecord<String, String>> records){
         for(ConsumerRecord<String, String> record: records){
             logger.info("线程id:{} patition:{} 消费到消息：topic:{}--key:{}--value:{}",Thread.currentThread().getId(),record.partition(),record.topic(),record.key(),record.value());
         }
     }
 
-    @KafkaListener(id="listener4",topicPartitions ={@TopicPartition(topic ="${kafka.topic.realtime}",partitions = {"4","9"})})
+//    @KafkaListener(id="listener4",topicPartitions ={@TopicPartition(topic ="${kafka.topic.realtime}",partitions = {"4","9"})})
     public void processMsg4(List<ConsumerRecord<String, String>> records){
         for(ConsumerRecord<String, String> record: records){
             logger.info("线程id:{} patition:{} 消费到消息：topic:{}--key:{}--value:{}",Thread.currentThread().getId(),record.partition(),record.topic(),record.key(),record.value());
@@ -91,13 +89,13 @@ public class KafkaConsumerListener {
     }
 
     private void storeCommEventData(DeviceData dd) {
-        redisClient.hset(dd.getDeviceId()+".status","comm",dd.getData().get("status").toString());
+//        redisClient.hset(dd.getDeviceId()+".status","comm",dd.getData().get("status").toString());
     }
 
     private void storeCheckpointsData(DeviceData dd) {
         Map<String, String> map = this.convertToStringValue(dd.getData());
         map.put("lastUpdatedAt", System.currentTimeMillis()+"");
-        redisClient.hmset(dd.getDeviceId()+".checkpoints",map);
+//        redisClient.hmset(dd.getDeviceId()+".checkpoints",map);
     }
 
     private Map<String, String> convertToStringValue(Map<String, Object> data) {
